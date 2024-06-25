@@ -18,6 +18,14 @@ function App() {
   const symbols = "~`<>.,!@#$%^&*()_+:'-=[]{}|\/?";
   function changeHandler(event){
       setPasswordLength(event.target.value);
+      document.getElementsByClassName('slider')?.[0].addEventListener('input', function() {
+        const value = this.value;
+        const min = this.min;
+        const max = this.max;
+        const percentage = ((value - min) / (max - min)) * 100;
+        
+        this.style.background = `linear-gradient(to right, violet 0%, violet ${percentage}%, gray ${percentage}%, gray 100%)`;
+      });
   }
   let arrayIncluded = [];
   function submitHandler(data){
